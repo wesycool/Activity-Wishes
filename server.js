@@ -4,6 +4,9 @@ const mysql = require('mysql')
 const express = require('express')
 const exphbs = require("express-handlebars");
 
+const app = express()
+const PORT = 3000
+
 class Database {
     constructor( config ) {
         this.connection = mysql.createConnection( config );
@@ -36,3 +39,25 @@ const db = new Database({
     database: process.env.DB_NAME,
     insecureAuth : true
 });
+
+
+app.get('/', async function(req,res){
+    const data = await db.query('SELECT * FROM wishes;')
+    res.send(data)
+
+    await db.close()
+
+})
+
+app.listen(PORT, function(){
+    console.log('Listening PORT:',PORT)
+})
+
+
+// async function getData(){
+//     const data = await db.query('SELECT * FROM wishes;')
+//     console.log(data)
+//     await db.close()
+// }
+
+// getData()

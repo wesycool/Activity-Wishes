@@ -8,7 +8,7 @@ USE wishes_db;
 -- Inside of that database, make a table called "wishes" which will have a wish column and an id column. 
 -- The id will be automatically incremented while also being the primary key.
 
-CREATE TABLE wises(
+CREATE TABLE wishes(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     wish VARCHAR(255)
 );
